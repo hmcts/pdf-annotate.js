@@ -2,36 +2,31 @@ var webpack = require('webpack');
 
 module.exports = function(config) {
   config.set({
-
     basePath: '',
-
     frameworks: ['mocha', 'sinon-chai'],
-    
     files: [
       'test/**/*.spec.js'
     ],
-
-    exclude: [
-    ],
-
+    exclude: [],
     preprocessors: {
       'test/**/*.spec.js': ['webpack', 'sourcemap']
     },
-
     reporters: ['dots', 'coverage'],
-
     port: 9876,
-
     colors: true,
-
     logLevel: config.LOG_INFO,
-    
     autoWatch: true,
-
-    browsers: ['Firefox'],
+    browsers: ['Chrome'],
 
     singleRun: false,
-
+    plugins : [
+      'karma-mocha',
+      'karma-sinon-chai',
+      'karma-chrome-launcher',
+      'karma-sourcemap-loader',
+      'karma-webpack',
+      'karma-coverage'
+    ],
     webpack: {
       cache: true,
       devtool: 'inline-source-map',
@@ -61,13 +56,11 @@ module.exports = function(config) {
         })
       ]
     },
-
     webpackServer: {
       stats: {
         colors: true
       }
     },
-
     coverageReporter: {
       type: 'lcov',
       dir: 'coverage/',
