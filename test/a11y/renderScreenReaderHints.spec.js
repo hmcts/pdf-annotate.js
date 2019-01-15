@@ -60,7 +60,7 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'highlight',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         rectangles: [{
           height: 10,
           width: 10,
@@ -81,7 +81,7 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'strikeout',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         rectangles: [{
           height: 10,
           width: 50,
@@ -102,7 +102,7 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'drawing',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         lines: [[0, 11]]
       }]);
 
@@ -115,7 +115,7 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'area',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         width: 50,
         x: 0,
         y: 11
@@ -130,7 +130,7 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'textbox',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         width: 100,
         height: 10,
         x: 0,
@@ -147,7 +147,7 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'point',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         x: 0,
         y: 11,
         content: 'hello'
@@ -164,14 +164,14 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'point',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         x: 5,
         y: 5,
         content: 'foo'
       }, {
         type: 'point',
         page: 1,
-        uuid: 67890,
+        id: 67890,
         x: 0,
         y: 0,
         content: 'foo'
@@ -185,7 +185,7 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'highlight',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         rectangles: [{
           width: 10,
           height: 10,
@@ -195,7 +195,7 @@ describe('a11y::renderScreenReaderHints', function () {
       }, {
         type: 'highlight',
         page: 1,
-        uuid: 67890,
+        id: 67890,
         rectangles: [{
           width: 10,
           height: 10,
@@ -214,12 +214,12 @@ describe('a11y::renderScreenReaderHints', function () {
       renderScreenReaderHints([{
         type: 'drawing',
         page: 1,
-        uuid: 12345,
+        id: 12345,
         lines: [[5, 5]]
       }, {
         type: 'drawing',
         page: 1,
-        uuid: 67890,
+        id: 67890,
         lines: [[0, 0]]
       }]);
 

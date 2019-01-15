@@ -13,3 +13,5 @@ docs/shared/shared/pdf\.js
 docs/shared/shared/pdf\.worker\.js
 
 docs/shared/shared/toolbar\.css
+
+dist/

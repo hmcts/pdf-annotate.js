@@ -77,13 +77,13 @@ describe('render::appendChild', function () {
 
   it('should add data-attributes', function () {
     let point = appendChild(svg, {
-      uuid: 1234,
+      id: 1234,
       type: 'point',
       x: 0,
       y: 0
     }, viewport);
     let area = appendChild(svg, {
-      uuid: 5678,
+      id: 5678,
       type: 'area',
       x: 0,
       y: 0,

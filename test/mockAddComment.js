@@ -6,7 +6,7 @@ export default (spy) => {
     
     let comment = {
       class: 'Comment',
-      uuid: uuid(),
+      id: uuid(),
       annotation: annotationId,
       content: content
     };

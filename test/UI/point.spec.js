@@ -102,7 +102,7 @@ describe('UI::point', function () {
       equal(addAnnotationArgs[2].type, 'point');
 
       equal(addCommentArgs[0], 'test-document-id');
-      equal(addCommentArgs[1], addAnnotationArgs[2].uuid);
+      equal(addCommentArgs[1], addAnnotationArgs[2].id);
       equal(addCommentArgs[2], 'foo bar baz');
       
       done();

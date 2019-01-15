@@ -21,12 +21,12 @@ export default function insertScreenReaderHint(annotation, num = 0) {
       let last = rects[rects.length - 1];
 
       insertElementWithinElement(
-        createScreenReaderOnly(`Begin ${annotation.type} annotation ${num}`, annotation.uuid),
+        createScreenReaderOnly(`Begin ${annotation.type} annotation ${num}`, annotation.id),
         first.x, first.y, annotation.page, true
       );
 
       insertElementWithinElement(
-        createScreenReaderOnly(`End ${annotation.type} annotation ${num}`, `${annotation.uuid}-end`),
+        createScreenReaderOnly(`End ${annotation.type} annotation ${num}`, `${annotation.id}-end`),
         last.x + last.width, last.y, annotation.page, false
       );
       break;
@@ -36,7 +36,7 @@ export default function insertScreenReaderHint(annotation, num = 0) {
       let text = annotation.type === 'textbox' ? ` (content: ${annotation.content})` : '';
 
       insertElementWithinChildren(
-        createScreenReaderOnly(`${annotation.type} annotation ${num}${text}`, annotation.uuid),
+        createScreenReaderOnly(`${annotation.type} annotation ${num}${text}`, annotation.id),
         annotation.x, annotation.y, annotation.page
       );
       break;
@@ -47,7 +47,7 @@ export default function insertScreenReaderHint(annotation, num = 0) {
       let y = typeof annotation.y !== 'undefined' ? annotation.y : annotation.lines[0][1];
 
       insertElementWithinChildren(
-        createScreenReaderOnly(`Unlabeled drawing`, annotation.uuid),
+        createScreenReaderOnly(`Unlabeled drawing`, annotation.id),
         x, y, annotation.page
       );
       break;
@@ -55,6 +55,6 @@ export default function insertScreenReaderHint(annotation, num = 0) {
 
   // Include comments in screen reader hint
   if (COMMENT_TYPES.includes(annotation.type)) {
-    renderScreenReaderComments(annotation.documentId, annotation.uuid);
+    renderScreenReaderComments(annotation.documentId, annotation.id);
   }
 }

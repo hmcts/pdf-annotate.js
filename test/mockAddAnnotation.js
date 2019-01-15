@@ -5,7 +5,7 @@ export default (spy) => {
     spy(documentId, pageNumber, annotation);
     
     annotation.class = 'Annotation';
-    annotation.uuid = uuid();
+    annotation.id = uuid();
     annotation.page = pageNumber;
 
     return Promise.resolve(annotation);

@@ -27,7 +27,7 @@ export default class LocalStoreAdapter extends StoreAdapter {
       addAnnotation(documentId, pageNumber, annotation) {
         return new Promise((resolve, reject) => {
           annotation.class = 'Annotation';
-          annotation.uuid = uuid();
+          annotation.id = uuid();
           annotation.page = pageNumber;
 
           let annotations = getAnnotations(documentId);
@@ -73,7 +73,7 @@ export default class LocalStoreAdapter extends StoreAdapter {
         return new Promise((resolve, reject) => {
           let comment = {
             class: 'Comment',
-            uuid: uuid(),
+            id: uuid(),
             annotation: annotationId,
             content: content
           };
@@ -92,7 +92,7 @@ export default class LocalStoreAdapter extends StoreAdapter {
           let index = -1;
           let annotations = getAnnotations(documentId);
           for (let i=0, l=annotations.length; i<l; i++) {
-            if (annotations[i].uuid === commentId) {
+            if (annotations[i].id === commentId) {
               index = i;
               break;
             }
@@ -122,7 +122,7 @@ function findAnnotation(documentId, annotationId) {
   let index = -1;
   let annotations = getAnnotations(documentId);
   for (let i=0, l=annotations.length; i<l; i++) {
-    if (annotations[i].uuid === annotationId) {
+    if (annotations[i].id === annotationId) {
       index = i;
       break;
     }
