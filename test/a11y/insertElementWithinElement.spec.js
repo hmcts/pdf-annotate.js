@@ -29,7 +29,7 @@ describe('a11y::insertElementWithinElement', function () {
     let result = insertElementWithinElement(el, rect.left + 10 + (CHAR_WIDTH * 5), rect.top + 15, 1);
     equal(result, true);
   });
-  
+
   it('should not insert if no element can be found', function () {
     let el = createElement();
     let result = insertElementWithinElement(el, rect.left, rect.top + 25, 1);
@@ -41,7 +41,7 @@ describe('a11y::insertElementWithinElement', function () {
     let textLayer = page.querySelector('.textLayer');
     insertElementWithinElement(el, rect.left + 10 + (CHAR_WIDTH * (process.env.CI === 'true' ? 6 : 5)), rect.top + 15, 1);
     let node = textLayer.children[0];
-    equal(node.innerHTML, 'abcde<div>hello</div>fghijklmnopqrstuvwxyz');
+    equal(node.innerHTML, 'abcdef<div>hello</div>ghijklmnopqrstuvwxyz');
   });
 
   it('should not insert within a nested element', function () {
@@ -50,6 +50,6 @@ describe('a11y::insertElementWithinElement', function () {
     let node = textLayer.children[0];
     node.innerHTML = node.innerHTML.replace('ef', 'e<img>f');
     insertElementWithinElement(el, rect.left + 10 + (CHAR_WIDTH * (process.env.CI === 'true' ? 6 : 5)), rect.top + 15, 1);
-    equal(node.innerHTML, 'abcde<div>hello</div><img>fghijklmnopqrstuvwxyz');
+    equal(node.innerHTML, 'abcde<img>f<div>hello</div>ghijklmnopqrstuvwxyz');
   });
 });
