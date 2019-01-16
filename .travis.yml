@@ -7,6 +7,7 @@ node_js:
 cache: yarn
 script:
 - yarn --version
+- yarn install
 - yarn check --integrity
 - yarn test
 deploy:
