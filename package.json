@@ -1,5 +1,5 @@
 {
-  "name": "pdf-annotate.js",
+  "name": "@hmcts/pdf-annotate.js",
   "version": "1.0.0",
   "description": "Fixes for rotation handling of annotations in instructure/pdf-annotates.js",
   "main": "dist/pdf-annotate.js",
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hmcts/pdf-annotate.js.git"
+    "url": "https://github.com/hmcts/pdf-annotate.js.git"
   },
   "keywords": [
     "pdf",
