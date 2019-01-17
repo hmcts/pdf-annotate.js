@@ -1,11 +1,25 @@
 language: node_js
 addons:
-  firefox: latest
+  chrome: stable
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-after_success:
-  - npm run coveralls
-email:
-  on_failure: change
-  on_success: never
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+node_js:
+- 8.11.1
+- lts/*
+- 10.6.0
+- node
+cache: yarn
+script:
+- yarn --version
+- yarn install
+- yarn check --integrity
+- yarn test
+deploy:
+  provider: npm
+  email: jenkins-reform@hmcts.net
+  api_key:
+    secure: q+CDfgA7pE3KVwMsUAgaRDJJufCkIGUJU/VtpeVdotCRTPcDz4aarVaXrd5MNnnqLPe5hGEvLp7DIJk+AQB7Lm0rh/zRAvNyjI9gOMsbcDaHBnJbJKH5MUt3xjogzxoGn6VZQmGDha8UpMqQ37FL/rCEbCiOOoW6N9niOYz38d+aDsNHBzMi4cM8deiZu4vVPGX/LbmsU1haCCvWZF9Kv8ZK3coNDt/YCLymHz0GpZohkn0x5Gmc+YPhs6Bwv5emVqO1wNHC/5I+q5tKiheenPJ9e1IlvpLXk7lsh82Zy99dJ4ODFpRlzrbQxMAbu6s4oK8OpX8k+L0G4+Sxfp466PfVjsvk+g4EQk9tz4onDz+gWJPsm1wMuAtZsrfv8pJcSpJaPGHqaL9Zo+FTXTKbJ+S9gBjDfPP0kv8xLjGipyfmlOpVbmUpSU8O8+hV2Etb6/aMD1Cc7FlU6IOc0yxH9G/avWi4xBq6SX1P9/Uv/BmjpcJu4+KqbeBJNIDfb7IsYFtzinU2KLLGl1N+Gw+pqwPH+BuToAXCipLTlDujF6qgi+NQiRhPi27pjuL4QHr8w3dX/mm2/5yDtwEtYOjYmRdTOPsTBesMlG/mb/1CQfWAh0LMl+aLaPGxaxFEaEOzn92cdduHSLMaTvopyZSSKEulQrhyA7NsM72Hdp8rW2c=
+  on:
+    tags: true
+    repo: hmcts/pdf-annotate.js

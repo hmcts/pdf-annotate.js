@@ -29,7 +29,7 @@ describe('a11y::insertElementWithinChildren', function () {
     let result = insertElementWithinChildren(el, rect.left, rect.top, 1);
     equal(result, true);
   });
-  
+
   it('should insert an element at the proper point', function () {
     let el = createElement('hello');
     let textLayer = page.querySelector('.textLayer');
@@ -43,7 +43,7 @@ describe('a11y::insertElementWithinChildren', function () {
     let textLayer = page.querySelector('.textLayer');
     insertElementWithinChildren(el, rect.left + 10 + (CHAR_WIDTH * (process.env.CI === 'true' ? 6 : 5)), rect.top + 15, 1);
     let node = textLayer.children[0];
-    equal(node.innerHTML, 'abcde<div>hello</div>fghijklmnopqrstuvwxyz');
+    equal(node.innerHTML, 'abcdef<div>hello</div>ghijklmnopqrstuvwxyz');
   });
 
   it('should insert at the bottom if all else fails', function () {

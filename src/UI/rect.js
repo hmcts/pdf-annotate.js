@@ -37,7 +37,7 @@ function getSelectionRects() {
       return rects;
     }
   } catch (e) {}
-  
+
   return null;
 }
 
@@ -63,7 +63,7 @@ function handleDocumentMousedown(e) {
   overlay.style.border = `3px solid ${BORDER_COLOR}`;
   overlay.style.borderRadius = '3px';
   svg.parentNode.appendChild(overlay);
-  
+
   document.addEventListener('mousemove', handleDocumentMousemove);
   disableUserSelect();
 }
@@ -147,15 +147,12 @@ function handleDocumentKeyup(e) {
  * @param {String} color The color of the rects
  */
 function saveRect(type, rects, color) {
-  let svg = findSVGAtPoint(rects[0].left, rects[0].top);
-  let node;
+  const svg = findSVGAtPoint(rects[0].left, rects[0].top);
   let annotation;
 
   if (!svg) {
     return;
   }
-
-  let boundingRect = svg.getBoundingClientRect();
 
   if (!color) {
     if (type === 'highlight') {
@@ -170,21 +167,18 @@ function saveRect(type, rects, color) {
     type,
     color,
     rectangles: [...rects].map((r) => {
-      let offset = 0;
 
-      if (type === 'strikeout') {
-        offset = r.height / 2;
-      }
+      const rotatedAnnotation = rotateAnnotation(svg, type, r);
 
       return scaleDown(svg, {
-        y: (r.top + offset) - boundingRect.top,
-        x: r.left - boundingRect.left,
-        width: r.width,
-        height: r.height
+        y: rotatedAnnotation.top,
+        x: rotatedAnnotation.left,
+        width: rotatedAnnotation.width,
+        height: rotatedAnnotation.height
       });
     }).filter((r) => r.width > 0 && r.height > 0 && r.x > -1 && r.y > -1)
   };
-  
+
   // Short circuit if no rectangles exist
   if (annotation.rectangles.length === 0) {
     return;
@@ -210,11 +204,52 @@ function saveRect(type, rects, color) {
 }
 
 /**
+ * adjusting the coordinates of new annotations being added after rotation
+ * to stay in sync with the original location of the top left
+ */
+function rotateAnnotation(svg, type, rect) {
+
+  const pageHeight = svg.getAttribute("height");
+  const pageWidth = svg.getAttribute("width");
+  const rotation =  JSON.parse(svg.getAttribute("data-pdf-annotate-viewport")).rotation;
+  const boundingRect = svg.getBoundingClientRect();
+  const offset = type === 'strikeout' ? r.height/2 : 0;
+
+  const relativeTop = rect.top + offset - boundingRect.top;
+  const relativeLeft = rect.left - boundingRect.left;
+
+  let top = relativeTop;
+  let left = relativeLeft;
+  let width = rect.width;
+  let height = rect.height;
+
+  switch (rotation) {
+    case 90:
+      top = pageWidth - relativeLeft - rect.height;
+      left = relativeTop;
+      width = rect.height;
+      height = rect.width;
+      break;
+    case 180:
+      top = pageHeight - relativeTop - rect.height;
+      left = pageWidth - relativeLeft - rect.width;
+      break;
+    case 270:
+      top = relativeLeft;
+      left = pageHeight - relativeTop - rect.height;
+      width = rect.height;
+      height = rect.width;
+      break;
+  }
+  return { top, left, height, width }
+}
+
+/**
  * Enable rect behavior
  */
 export function enableRect(type) {
   _type = type;
-  
+
   if (_enabled) { return; }
 
   _enabled = true;
