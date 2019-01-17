@@ -28,6 +28,9 @@ function getSelectionRects() {
     let range = selection.getRangeAt(0);
     let rects = range.getClientRects();
 
+    if (rects.length < 2 && rects[0].width < 8) {
+      return null;
+    }
     if (rects.length > 0 &&
         rects[0].width > 0 &&
         rects[0].height > 0) {

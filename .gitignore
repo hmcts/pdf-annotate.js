@@ -1,3 +1,17 @@
 node_modules/
 coverage/
 sandbox/shared
+
+docs/shared/shared/initColorPicker\.js
+
+docs/shared/shared/pdf_viewer\.css
+
+docs/shared/shared/pdf_viewer\.js
+
+docs/shared/shared/pdf\.js
+
+docs/shared/shared/pdf\.worker\.js
+
+docs/shared/shared/toolbar\.css
+
+dist/

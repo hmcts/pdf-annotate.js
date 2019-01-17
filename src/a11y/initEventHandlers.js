@@ -17,6 +17,7 @@ export default function initEventHandlers() {
   });
   addEventListener('annotation:delete', removeAnnotation);
   addEventListener('comment:add', insertComment);
+  addEventListener('comment:edit', editComment);
   addEventListener('comment:delete', removeComment);
 }
 
@@ -36,7 +37,7 @@ function reorderAnnotationsByType(documentId, pageNumber, type) {
     })
     .then((annotations) => {
       annotations.forEach((a) => {
-        removeAnnotation(documentId, a.uuid);
+        removeAnnotation(documentId, a.id);
       });
 
       return annotations;
@@ -78,6 +79,15 @@ function insertComment(documentId, annotationId, comment) {
   promise.then(() => {
     insertScreenReaderComment(comment);
   });
+}
+
+/**
+ * Insert a screen reader hint for a comment
+ *
+ * @param {String} documentId The ID of the document
+ * @param {Object} comment to insert a hint for
+ */
+function editComment(documentId, comment) {
 }
 
 /**

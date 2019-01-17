@@ -83,7 +83,7 @@ function savePoint() {
       .then((annotation) => {
         PDFJSAnnotate.getStoreAdapter().addComment(
           documentId,
-          annotation.uuid,
+          annotation.id,
           content
         );
 
