@@ -1,7 +1,7 @@
 {
   "name": "pdf-annotate.js",
-  "version": "0.0.0",
-  "description": "Annotation layer for pdf.js",
+  "version": "1.0.0",
+  "description": "Fixes for rotation handling of annotations in instructure/pdf-annotates.js",
   "main": "dist/pdf-annotate.js",
   "scripts": {
     "test": "karma start --single-run",
@@ -14,16 +14,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/instructure/pdf-annotate.js.git"
+    "url": "git+https://github.com/hmcts/pdf-annotate.js.git"
   },
   "keywords": [
     "pdf",
     "annotation"
   ],
-  "author": "Matt Zabriskie",
+  "author": "HMCTS",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/instructure/pdf-annotate.js/issues"
+    "url": "https://github.com/hmcts/pdf-annotate.js/issues"
   },
   "homepage": "https://github.com/instructure/pdf-annotate.js#readme",
   "devDependencies": {
