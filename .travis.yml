@@ -15,6 +15,7 @@ script:
 - yarn install
 - yarn check --integrity
 - yarn test
+- yarn pack
 deploy:
   provider: npm
   email: jenkins-reform@hmcts.net
