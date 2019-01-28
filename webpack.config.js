@@ -1,10 +1,14 @@
 var webpack = require('webpack');
 var fileName = 'pdf-annotate';
 var plugins = [];
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 if (process.env.MINIFY) {
   fileName += '.min'
   plugins.push(
+    new CopyWebpackPlugin([
+      { from: 'assets', to: 'dist' }
+    ]),
     new webpack.optimize.UglifyJsPlugin()
   );
 }
