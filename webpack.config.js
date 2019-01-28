@@ -7,7 +7,7 @@ if (process.env.MINIFY) {
   fileName += '.min'
   plugins.push(
     new CopyWebpackPlugin([
-      { from: 'assets', to: 'dist' }
+      { from: 'assets', to: 'dist/js' }
     ]),
     new webpack.optimize.UglifyJsPlugin()
   );
@@ -18,7 +18,7 @@ module.exports = {
   plugins: plugins,
   entry: './index.js',
   output: {
-    filename: 'dist/' + fileName + '.js',
+    filename: 'dist/js/' + fileName + '.js',
     library: 'PDFAnnotate',
     libraryTarget: 'umd'
   },
