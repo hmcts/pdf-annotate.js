@@ -15,6 +15,7 @@ script:
 - yarn install
 - yarn check --integrity
 - yarn test
+- yarn build
 - yarn pack
 deploy:
   provider: npm
