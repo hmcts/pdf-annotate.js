@@ -12,9 +12,7 @@ node_js:
 cache: yarn
 script:
 - npm --version
-- yarn --version
 - npm install
-- yarn check --integrity
 - npm test
 - npm run build
 deploy:
