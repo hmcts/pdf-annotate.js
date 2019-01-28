@@ -11,13 +11,12 @@ node_js:
 - node
 cache: yarn
 script:
+- npm --version
 - yarn --version
-- yarn install
+- npm install
 - yarn check --integrity
-- yarn test
-- yarn build
-- yarn pack
-- yarn publish dist/
+- npm test
+- npm run build
 deploy:
   provider: npm
   email: jenkins-reform@hmcts.net
@@ -26,3 +25,4 @@ deploy:
   on:
     tags: true
     repo: hmcts/pdf-annotate.js
+  skip_cleanup: true
