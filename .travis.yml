@@ -17,6 +17,7 @@ script:
 - yarn test
 - yarn build
 - yarn pack
+- yarn publish dist/
 deploy:
   provider: npm
   email: jenkins-reform@hmcts.net
