@@ -1,6 +1,6 @@
 {
   "name": "@hmcts/pdf-annotate",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "description": "Fixes for rotation handling of annotations in instructure/pdf-annotates.js",
   "main": "dist/pdf-annotate.js",
   "scripts": {
@@ -57,7 +57,8 @@
   "dependencies": {
     "copy-webpack-plugin": "^4.6.0",
     "create-stylesheet": "^0.3.0",
-    "object-assign": "^4.0.1"
+    "object-assign": "^4.0.1",
+    "uglify-es": "^3.3.9"
   },
   "publishConfig": {
     "access": "public"

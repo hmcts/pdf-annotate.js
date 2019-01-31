@@ -1,13 +1,21 @@
-var webpack = require('webpack');
-var fileName = 'pdf-annotate';
-var plugins = [];
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+let webpack = require('webpack');
+let uglifyEs = require('uglify-es');
+let fileName = 'pdf-annotate';
+let plugins = [];
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 
 if (process.env.MINIFY) {
   fileName += '.min'
   plugins.push(
     new CopyWebpackPlugin([
-      { from: 'assets', to: 'dist/js' }
+      {
+        from: 'assets/',
+        to: 'dist/js/[name].min.[ext]',
+        toType: 'template',
+        transform: function(fileContent) {
+          return uglifyEs.minify(fileContent.toString()).code.toString()
+        }
+      }
     ]),
     new webpack.optimize.UglifyJsPlugin()
   );
