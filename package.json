@@ -1,6 +1,6 @@
 {
   "name": "@hmcts/pdf-annotate",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "Fixes for rotation handling of annotations in instructure/pdf-annotates.js",
   "main": "dist/pdf-annotate.js",
   "scripts": {

@@ -9,9 +9,15 @@ if (process.env.MINIFY) {
   plugins.push(
     new CopyWebpackPlugin([
       {
-        from: 'assets/',
-        to: 'dist/js/[name].min.[ext]',
-        toType: 'template',
+        from: 'node_modules/pdfjs-dist/web/pdf_viewer.js',
+        to: 'dist/js/pdf_viewer.min.js',
+        transform: function(fileContent) {
+          return uglifyEs.minify(fileContent.toString()).code.toString()
+        }
+      },
+      {
+        from: 'node_modules/pdfjs-dist/build/pdf.combined.js',
+        to: 'dist/js/pdf.combined.min.js',
         transform: function(fileContent) {
           return uglifyEs.minify(fileContent.toString()).code.toString()
         }
