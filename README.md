@@ -1,6 +1,7 @@
 # hmcts/pdf-annotate.js (forked from instructure/pdf-annotate.js)
 
 [![build status](https://api.travis-ci.com/hmcts/pdf-annotate.js.svg?branch=master)](https://travis-ci.com/hmcts/pdf-annotate.js)
+[![Coverage Status](https://coveralls.io/repos/github/hmcts/pdf-annotate.js/badge.svg)](https://coveralls.io/github/hmcts/pdf-annotate.js)
 
 A fork of [pdf-annotate.js](https://github.com/instructure/pdf-annotate.js) to fix issues with rotations
 
