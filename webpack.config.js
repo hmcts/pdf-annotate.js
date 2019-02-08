@@ -1,8 +1,9 @@
-let webpack = require('webpack');
-let uglifyEs = require('uglify-es');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const uglifyEs = require('uglify-es');
+
 let fileName = 'pdf-annotate';
-let plugins = [];
-let CopyWebpackPlugin = require('copy-webpack-plugin');
+const plugins = [];
 
 if (process.env.MINIFY) {
   fileName += '.min'
