@@ -93,7 +93,9 @@ function handleDocumentMousemove(e) {
  */
 function handleDocumentMouseup(e) {
   let rects;
-  if (_type !== 'area' && (rects = getSelectionRects())) {
+  let selection = window.getSelection();
+  if (_type !== 'area' && (e.srcElement.getAttribute('prevent-default-highlighting-behaviour') === 'true')
+      && (rects = getSelectionRects())) {
     let svg = findSVGAtPoint(rects[0].left, rects[0].top);
     saveRect(_type, [...rects].map((r) => {
       return {
@@ -118,6 +120,9 @@ function handleDocumentMouseup(e) {
 
     document.removeEventListener('mousemove', handleDocumentMousemove);
     enableUserSelect();
+  } else if ((selection.baseNode !== null && selection.baseNode.parentNode.getAttribute('prevent-default-highlighting-behaviour') === 'true')
+      || (selection.baseNode instanceof HTMLElement && selection.baseNode.getAttribute('prevent-default-highlighting-behaviour') === 'true')) {
+    window.getSelection().empty();
   }
 }
 
