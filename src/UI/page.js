@@ -130,8 +130,7 @@ function scalePage(pageNumber, viewport, context) {
   svg.setAttribute('height', viewport.height);
   svg.style.width = `${viewport.width}px`;
   svg.style.height = `${viewport.height}px`;
-  page.style.width = `${viewport.width}px`;
-  page.style.height = `${viewport.height}px`;
+  page.style.overflow = 'auto';
   wrapper.style.width = `${viewport.width}px`;
   wrapper.style.height = `${viewport.height}px`;
   textLayer.style.width = `${viewport.width}px`;
