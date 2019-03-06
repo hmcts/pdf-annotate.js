@@ -17,7 +17,7 @@ if (process.env.MINIFY) {
         }
       },
       {
-        from: 'node_modules/pdfjs-dist/build/pdf.combined.js',
+        from: 'src/pdf.combined.js',
         to: 'dist/js/pdf.combined.min.js',
         transform: function(fileContent) {
           return uglifyEs.minify(fileContent.toString()).code.toString()
